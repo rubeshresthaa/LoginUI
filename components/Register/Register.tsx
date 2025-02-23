@@ -42,9 +42,8 @@ const formSchema = z.object({
 
 export function Register() {
  
-  const[showPass,setShowPass]=useState<boolean | undefined>(false)
-  const[confirmPass,setConfirmPass]=useState<boolean | undefined>(false)
-
+  const[showPass,setShowPass]=useState(false)
+  const[confirmPass,setConfirmPass]=useState(false)
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

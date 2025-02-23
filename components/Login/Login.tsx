@@ -84,7 +84,7 @@
           />
           <div className="space-y-5">
           <p className="text-xs cursor-pointer font-light">Forgot Password?</p>
-          <p className="text-xs font-light">Don't have an Account?<strong className="ml-2 text-xs cursor-pointer font-bold underline underline-offset-4 hover:text-blue-700">Register Now!</strong></p>
+          <p className="text-xs font-light">Don&apos;t have an Account?<strong className="ml-2 text-xs cursor-pointer font-bold underline underline-offset-4 hover:text-blue-700">Register Now!</strong></p>
           </div>
           <div className="flex justify-center items-center mx-4">
           <Button type="submit" className="w-48 lg:w-60 hover:bg-gray-800">Login</Button>
