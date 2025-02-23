@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -27,9 +26,6 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useState } from "react";
-import { FaEye } from "react-icons/fa";
-import { Divide } from "lucide-react";
-
 
 const formSchema = z.object({
   email:z.string().email().min(5, {
@@ -118,8 +114,8 @@ export function Register() {
               <FormControl>
                 <div className="flex justify-between items-center relative">
                 <Input {...field} type={showPass ? "text" :"password"} className="font-light" />
-                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "hidden" : "block"}`} onClick={()=>setShowPass(true)}/>
-                <IoMdEyeOff className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "block" : "hidden"}`} onClick={()=>setShowPass(false)} />
+                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${confirmPass ? "hidden" : "block"}`} onClick={()=>setConfirmPass(true)}/>
+                <IoMdEyeOff className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "block" : "hidden"}`} onClick={()=>setConfirmPass(false)} />
                 </div>
                
               </FormControl>
