@@ -7,8 +7,6 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import { FaApple } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
-
-
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -42,7 +40,7 @@ const formSchema = z.object({
   password:passwordSchema,
   confirmPassword:z.string().trim().min(1,{message:"Password Didnt Match"})
 }).refine((data)=>data.password === data.confirmPassword,{
-  message:"Password didnot match",
+  message:"Password didn't match",
   path:["confirmPassword"]
 })
 
@@ -58,13 +56,14 @@ export function Register() {
       confirmPassword:""
     },
   })
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    
+  function onSubmit(values: z.infer<typeof formSchema>) { 
     console.log(values)
-    form.reset();
-
+    form.reset({
+      email:"",
+      password:"",
+      confirmPassword:""
+    });
   }
-
 
   return (
     <div className="space-y-5">
