@@ -47,7 +47,6 @@ const formSchema = z.object({
 })
 
 export function Register() {
-  const{reset}=useForm();
   const[showPass,setShowPass]=useState(false)
   const[confirmPass,setConfirmPass]=useState(false)
   
