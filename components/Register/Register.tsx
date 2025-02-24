@@ -8,6 +8,7 @@ import { FaApple } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
+
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -20,21 +21,33 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from "react";
 
+const passwordSchema = z
+  .string()
+  .trim()
+  .min(1, { message: "This field can not be empty" })
+  .min(8, { message: "Password must be at least 8 characters long" })
+  .regex(/[A-Z]/, {
+    message: "Password must contain at least one uppercase letter",
+  })
+  .regex(/\d/, { message: "Password must contain at least one numeric digit" })
+  .regex(/[!@#$%^&*(),.?":{}|<>]/, {
+    message: "Password must contain at least one special character",
+  });
+
 const formSchema = z.object({
-  email:z.string().email().min(5, {
-    message: "Username must be at least 5 characters.",
-  }),
-  password:z.string().min(5,{
-    message:"Password must be at least 5 characters"
-  }).max(10,{
-    message:"Password must not be more than 10"
-  }),
-  confirmPassword:z.string()
- 
+  email: z.string()
+  .min(1, { message: "Email is required" }) // Ensures the field is not empty
+  .email({ message: "Invalid email address" }) // Validates email format
+  .min(5, { message: "Email must be at least 5 characters." }), 
+  password:passwordSchema,
+  confirmPassword:z.string().trim().min(1,{message:"Password Didnt Match"})
+}).refine((data)=>data.password === data.confirmPassword,{
+  message:"Password didnot match",
+  path:["confirmPassword"]
 })
 
 export function Register() {
- 
+  const{reset}=useForm();
   const[showPass,setShowPass]=useState(false)
   const[confirmPass,setConfirmPass]=useState(false)
   
@@ -42,12 +55,15 @@ export function Register() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password:""
+      password:"",
+      confirmPassword:""
     },
   })
   function onSubmit(values: z.infer<typeof formSchema>) {
     
     console.log(values)
+    form.reset();
+
   }
 
 
@@ -66,7 +82,7 @@ export function Register() {
             <FormItem className="flex flex-col items-start">
               <FormLabel>Enter Your Email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} className="font-light"/>
               </FormControl>
               
               <FormMessage />

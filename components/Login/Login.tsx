@@ -20,16 +20,27 @@
   import { Input } from "@/components/ui/input"
 import { useState } from "react";
 
-  const formSchema = z.object({
-    email:z.string().email().min(5, {
-      message: "Username must be at least 5 characters.",
-    }),
-    password:z.string().min(5,{
-      message:"Password must be at least 5 characters"
-    }).max(10,{
-      message:"Password must not be more than 10"
-    })
+const passwordSchema = z
+  .string()
+  .trim()
+  .min(1, { message: "This field can not be empty" })
+  .min(8, { message: "Password must be at least 8 characters long" })
+  .regex(/[A-Z]/, {
+    message: "Password must contain at least one uppercase letter",
   })
+  .regex(/\d/, { message: "Password must contain at least one numeric digit" })
+  .regex(/[!@#$%^&*(),.?":{}|<>]/, {
+    message: "Password must contain at least one special character",
+  });
+  const formSchema = z.object({
+    email: z.string()
+    .min(1, { message: "Email is required" }).trim().
+    email({ message: "Invalid email address" }) // Validates email format
+    .min(8, { message: "Email must be at least 8 characters." }), 
+    password:passwordSchema
+  })
+
+
 
   export function Login() {
 
@@ -45,6 +56,7 @@ import { useState } from "react";
     function onSubmit(values: z.infer<typeof formSchema>) {
       
       console.log(values)
+      
     }
     return (
       <div className="space-y-5">
