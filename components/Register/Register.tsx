@@ -52,10 +52,9 @@ export function Register() {
 
 
   return (
-    <div>
-      <div className="space-y-2 mb-2">
+    <div className="space-y-5">
+      <div className=" mb-2">
         <h1 className="text-xl lg:text-3xl font-bold">Create Your Account!</h1>
-        <div className="w-16 h-5"></div>
        
       </div>
        <Form {...form}>
@@ -64,7 +63,7 @@ export function Register() {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex flex-col items-start">
               <FormLabel>Enter Your Email</FormLabel>
               <FormControl>
                 <Input {...field} />
@@ -79,13 +78,13 @@ export function Register() {
           name="password"
           render={({ field }) => (
             <div>
-                <FormItem>
+                <FormItem className="flex flex-col items-start">
               <FormLabel>Enter Your Password</FormLabel>
               <FormControl>
-                <div className="flex justify-between items-center relative">
+                <div className="flex justify-between items-center relative w-full">
                 <Input {...field} type={showPass ? "text" : "password"} className="font-light"  />
-                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "hidden" : "block"}`} onClick={()=>setShowPass(true)}  />
-                <IoMdEyeOff className={`absolute right-6  cursor-pointer opacity-50 ${showPass ? "block" : "hidden"}`} onClick={()=>setShowPass(false)}   />
+                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "block" : "hidden"}`} onClick={()=>setShowPass(false)}  />
+                <IoMdEyeOff className={`absolute right-6  cursor-pointer opacity-50 ${showPass ? "hidden" : "block"}`} onClick={()=>setShowPass(true)}   />
                 </div>
                 
               </FormControl>
@@ -101,13 +100,13 @@ export function Register() {
           control={form.control}
           name="confirmPassword"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex flex-col items-start">
               <FormLabel>Confirm Your Password</FormLabel>
               <FormControl>
-                <div className="flex justify-between items-center relative">
-                <Input {...field} type={showPass ? "text" :"password"} className="font-light" />
-                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${confirmPass ? "hidden" : "block"}`} onClick={()=>setConfirmPass(true)}/>
-                <IoMdEyeOff className={`absolute right-6 cursor-pointer opacity-50 ${showPass ? "block" : "hidden"}`} onClick={()=>setConfirmPass(false)} />
+                <div className="flex justify-between items-center relative w-full">
+                <Input {...field} type={confirmPass ? "text" : "password"} className="font-light"  />
+                <IoMdEye className={`absolute right-6 cursor-pointer opacity-50 ${confirmPass ? "block" : "hidden"}`} onClick={()=>setConfirmPass(false)}  />
+                <IoMdEyeOff className={`absolute right-6  cursor-pointer opacity-50 ${confirmPass ? "hidden" : "block"}`} onClick={()=>setConfirmPass(true)}   />
                 </div>
                
               </FormControl>

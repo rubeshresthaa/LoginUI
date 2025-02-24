@@ -18,10 +18,10 @@ const DialogBox = () => {
       <DialogTrigger asChild>
         <Button variant="outline">Login</Button>
       </DialogTrigger>
-      <DialogContent className="lg:max-w-3xl">
+      <DialogContent className="px-4 sm:px-20 md:px-32">
         <DialogHeader>
           <DialogTitle>
-          <Tabs defaultValue="" className="w-[400px]">
+          <Tabs defaultValue="" className="w-full">
             <TabsList>
     <TabsTrigger value="login">Login</TabsTrigger>
     <TabsTrigger value="signup">Sign Up</TabsTrigger>
