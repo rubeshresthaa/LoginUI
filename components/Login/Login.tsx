@@ -68,7 +68,7 @@ import { useState } from "react";
               <FormItem className="flex flex-col items-start">
                 <FormLabel>Enter Your Email</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} className="font-light" />
                 </FormControl>
                 
                 <FormMessage />

@@ -18,7 +18,7 @@ const DialogBox = () => {
       <DialogTrigger asChild>
         <Button variant="outline">Login</Button>
       </DialogTrigger>
-      <DialogContent className="px-4 sm:px-20 md:px-32">
+      <DialogContent className="">
         <DialogHeader>
           <DialogTitle>
           <Tabs defaultValue="" className="w-full">
